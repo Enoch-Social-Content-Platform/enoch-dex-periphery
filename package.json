@@ -1,0 +1,27 @@
+{
+  "name": "enoch-dex-periphery",
+  "version": "1.0.0",
+  "description": "Periphery smart contracts which interact with the core dex smart contracts",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finaxis300/enoch-dex-periphery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/finaxis300/enoch-dex-periphery/issues"
+  },
+  "homepage": "https://github.com/finaxis300/enoch-dex-periphery#readme",
+  "dependencies": {
+    "@uniswap/lib": "^4.0.1-alpha",
+    "@uniswap/v2-core": "^1.0.1"
+  }
+}
