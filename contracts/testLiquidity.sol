@@ -32,9 +32,16 @@ contract testLiquidity{
             1,
             1,
             address(this),
+            block.timestamp
         )
 
+        emit Log("amountA", amountA);
+        emit Log("amountB", amountB);
+        emit Log("liquidity", liquidity);
+
     }
+
+    
 
 
 }
