@@ -6,9 +6,9 @@ import "./interfaces/Uniswap.sol";
 
 contract testLiquidity{
 
-    address private constant FACTORY;
-    address private constant ROUTER;
-    address private constant WETH;
+    address private constant FACTORY = 0x2a055D62690f94128C9532AB909ac6261c41304a;
+    address private constant ROUTER = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D; //uniswap router address
+    address private constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     event Log(string message, uint256 val);
 
@@ -33,7 +33,7 @@ contract testLiquidity{
             1,
             address(this),
             block.timestamp
-        )
+        );
 
         emit Log("amountA", amountA);
         emit Log("amountB", amountB);
