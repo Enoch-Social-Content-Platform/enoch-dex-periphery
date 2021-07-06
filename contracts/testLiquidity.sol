@@ -1,7 +1,10 @@
 pragma solidity >=0.5.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./interfaces/Uniswap.sol";
+// import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+import "./interfaces/IERC20.sol";
+// import "./interfaces/IUniswapV2Router01.sol";
+ import "./interfaces/Uniswap.sol";
 
 
 contract testLiquidity{
