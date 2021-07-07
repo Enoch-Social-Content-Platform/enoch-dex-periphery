@@ -13,5 +13,7 @@ module.exports = async function (deployer, network) {
       weth = await WETH.deployed();
   }
 
-  await deployer.deploy(Router, FACTORY_ADDRESS, weth.address)
+  await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
+
+  
 };
