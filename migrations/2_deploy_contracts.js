@@ -16,7 +16,8 @@ module.exports = async function (deployer, network) {
   await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
 
   const ROUTER = await Router.deployed();
-  // ROUTER_ADDRESS = ROUTER.address;
+  
+  ROUTER_ADDRESS = ROUTER.address;
 
   await ROUTER.addLiquidity(
     "0xC9aa5Ce92DCE6FD57706689136E1a4d049516553",
