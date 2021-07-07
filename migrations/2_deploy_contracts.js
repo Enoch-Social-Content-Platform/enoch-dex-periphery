@@ -22,10 +22,10 @@ module.exports = async function (deployer, network) {
   await ROUTER.addLiquidity(
     "0xC9aa5Ce92DCE6FD57706689136E1a4d049516553",
     "0x93AC3A8309BC7775420FAB26bE874a3a5ad4C488",
-    "10",
-    "10",
-    "1",
-    "1",
+    10,
+    10,
+    1,
+    1,
     "0xC9aa5Ce92DCE6FD57706689136E1a4d049516553",
    Math.floor(Date.now()/100) +60*5
   ) 
@@ -33,10 +33,10 @@ module.exports = async function (deployer, network) {
  await ROUTER.removeLiquidity(
   "0xC9aa5Ce92DCE6FD57706689136E1a4d049516553",
   "0x93AC3A8309BC7775420FAB26bE874a3a5ad4C488",
-  "10",
-  "10",
-  "1",
-  "1",
+  10,
+  10,
+  1,
+  1,
   "0xC9aa5Ce92DCE6FD57706689136E1a4d049516553",
  Math.floor(Date.now()/100) +60*5
  )
