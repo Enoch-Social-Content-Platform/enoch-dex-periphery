@@ -3,7 +3,7 @@ const WETH = artifacts.require("WETH.sol")
 
 module.exports = async function (deployer, network) {
   let weth;
-  const FACTORY_ADDRESS = '0xfB998B0A0a305b1938E58B7162d53E82B1BD141e';
+  const FACTORY_ADDRESS = '0xFa797BC07347ada632cFa244389f717F09ea4de4';
   
   if(network === 'mainnet'){
       weth = await WETH.at('0xB1BAB8754079ed93F4DD9E73aaaCC64fB921bCF2');
@@ -15,31 +15,32 @@ module.exports = async function (deployer, network) {
 
   await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
   const ROUTER = await Router.deployed();
-  ROUTER_ADDRESS = ROUTER.address;
+  // ROUTER_ADDRESS = ROUTER.address;
+ 
+  // await token1.approve("0x4c13569256E3009DB60B4D4A512E9310838AB244",10)
+  // await token2.approve("0x4c13569256E3009DB60B4D4A512E9310838AB244",10)
 
-  // const factory_address = await FACTORY_ADDRESS.deployed();
+  // await ROUTER.addLiquidity(
+  //   "0x0bF6AC75E596c45F44bad4F9231C0F53338f3fD3",
+  //   "0x2997f3AA7Ab93faAd26dF311265A1546a83E2e5A",
+  //   10,
+  //   10,
+  //   1,
+  //   1,
+  //   "0x6CaF44C89Af182202398fe924588C37B1E604C79",
+  //  Math.floor(Date.now()/100) + 60 * 5
+  // ) 
 
-  await ROUTER.addLiquidity(
-    "0x54fC302D2DfDf7e35ecE630e08aD24e61768dcb4",
-    "0x7877BE1014992FB16e06719Ea719219C82AF36b6",
-    10,
-    10,
-    1,
-    1,
-    "0x6CaF44C89Af182202398fe924588C37B1E604C79",
-   Math.floor(Date.now()/100) + 60 * 5
-  ) 
-
- await ROUTER.removeLiquidity(
-  "0x54fC302D2DfDf7e35ecE630e08aD24e61768dcb4",
-  "0x7877BE1014992FB16e06719Ea719219C82AF36b6",
-  10,
-  10,
-  1,
-  1,
-  "0x6CaF44C89Af182202398fe924588C37B1E604C79",
- Math.floor(Date.now()/100) + 60 * 5
- )
+//  await ROUTER.removeLiquidity(
+//   "0xc321B29F4D346E82B665063d34591466Ebf2439B",
+//   "0xD2E45402cf17E84f70A92aE33e773019Be7ee01D",
+//   10,
+//   10,
+//   1,
+//   1,
+//   "0x6CaF44C89Af182202398fe924588C37B1E604C79",
+//  Math.floor(Date.now()/100) + 60 * 5
+//  )
 
 };
 
