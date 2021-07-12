@@ -6,10 +6,13 @@ const {abi: Token2_ABI} = require("../build/contracts/Token2.json");
 
 module.exports = async function (deployer, network) {
   let weth;
-  const FACTORY_ADDRESS = '0x361a6519eC6A42F256F43A4fD50fa7fA79EB9bD1';// getting from core contract
+  const FACTORY_ADDRESS = '0xf1fc38C645454bdA0bF0E6a4d646Afeff86BE0Ee';// getting from core contract
+  token1Address = "0xc0E740877fE5F0189531c96351Ad140E1d799fD0";
+  token2Address = "0x661a64d3EB0f0cbE77d17695dA68f1Bb817A17BA";
+  account_address = "0x2048A1703888d05e11979B40AEc2Bc6B1AFf84eE";
 
-  const token1 = new web3.eth.Contract(Token1_ABI);
-  const token2 = new web3.eth.Contract(Token2_ABI);
+  const token1 = new web3.eth.Contract(Token1_ABI, token1Address);
+  const token2 = new web3.eth.Contract(Token2_ABI, token2Address);
   
   if(network === 'mainnet'){
       weth = await WETH.at('0xB1BAB8754079ed93F4DD9E73aaaCC64fB921bCF2');
@@ -19,39 +22,50 @@ module.exports = async function (deployer, network) {
       weth = await WETH.deployed();
   }
 
-  await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
+  let router = await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
   const ROUTER = await Router.deployed();
+
+  // const route = new web3.eth.Contract(ROUTER.abi, ROUTER.address);
   
-  await token1.methods.approve(ROUTER.address, 10);
-  await token2.methods.approve(ROUTER.address, 10);
+  let bal1 = await token1.methods.balanceOf(account_address).call()
+  let bal2 = await token2.methods.balanceOf(account_address).call()
 
-  await ROUTER.addLiquidity(
-    "0x944d5f4c3CF887D778225cE9fDE20de7Dea0319A", //token1 address
-    "0xd4391ec0b5EB0dCf9b35C03Bc19a97018FAF8A91", //token2 address
-    10,
-    10,
-    1,
-    1,
-    "0x6CaF44C89Af182202398fe924588C37B1E604C79", //account 1
-   Math.floor(Date.now()/100) + 60 * 10
-  ) 
+  console.log(bal1, bal2)
+ 
+  let ap1 = await token1.methods.approve(ROUTER.address, 100000).send({from:account_address});
+  let ap2 = await token2.methods.approve(ROUTER.address, 100000).send({from:account_address});
 
-//  await ROUTER.removeLiquidity(
-//   "0xc321B29F4D346E82B665063d34591466Ebf2439B",
-//   "0xD2E45402cf17E84f70A92aE33e773019Be7ee01D",
-//   10,
-//   10,
-//   1,
-//   1,
-//   "0x6CaF44C89Af182202398fe924588C37B1E604C79",
-//  Math.floor(Date.now()/100) + 60 * 5
-//  )
+ let a1 = await  token1.methods.allowance(account_address, ROUTER.address).call()
+ let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
+
+ console.log(a1, a2);
+  
+
+  // console.log(await route.methods.factory().call())
+
+   await ROUTER.addLiquidity(
+    token1Address, 
+    token2Address, 
+    100000,
+    100000,
+    100,
+    100,
+    account_address, 
+    Math.floor(Date.now()/100) + 60 * 30,
+    {from:account_address}
+  
+  )
+
+ await ROUTER.removeLiquidity(
+
+  "0xD2E45402cf17E84f70A92aE33e773019Be7ee01D",
+  10,
+  10,
+  1,
+  1,
+  "0x6CaF44C89Af182202398fe924588C37B1E604C79",
+ Math.floor(Date.now()/100) + 60 * 5
+ )
 
 };
 
-// await deployer.deploy(Token1);
-//       await deployer.deploy(Token2);
-//       const token1 = await Token1.deployed();
-//       const token2 = await Token2.deployed();
-//       token1Address = token1.address;
-//       token2Address = token2.address;
