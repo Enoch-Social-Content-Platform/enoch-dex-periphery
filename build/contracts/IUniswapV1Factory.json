@@ -21,7 +21,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"getExchange\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/interfaces/V1/IUniswapV1Factory.sol\":\"IUniswapV1Factory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/interfaces/V1/IUniswapV1Factory.sol\":{\"keccak256\":\"0xd080dfffb732df63f67e27c61766ca0c721df16ab5536bc69aa23d10e48c7770\",\"urls\":[\"bzz-raw://fb8114210bdd417e5cc82269377fe3cf41bc55ca3fe86f309fb6f0aef49f6750\",\"dweb:/ipfs/QmZjH7kS4YMiogfbzW9MqdQrcdiZCFUQWRuJ8CJK9NTSJ5\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"getExchange\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/interfaces/V1/IUniswapV1Factory.sol\":\"IUniswapV1Factory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/interfaces/V1/IUniswapV1Factory.sol\":{\"keccak256\":\"0xd080dfffb732df63f67e27c61766ca0c721df16ab5536bc69aa23d10e48c7770\",\"urls\":[\"bzz-raw://fb8114210bdd417e5cc82269377fe3cf41bc55ca3fe86f309fb6f0aef49f6750\",\"dweb:/ipfs/QmZjH7kS4YMiogfbzW9MqdQrcdiZCFUQWRuJ8CJK9NTSJ5\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -33,14 +33,14 @@
     "absolutePath": "/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/interfaces/V1/IUniswapV1Factory.sol",
     "exportedSymbols": {
       "IUniswapV1Factory": [
-        437
+        542
       ]
     },
-    "id": 438,
+    "id": 543,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 429,
+        "id": 534,
         "literals": [
           "solidity",
           ">=",
@@ -48,7 +48,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:4"
+        "src": "0:24:7"
       },
       {
         "abstract": false,
@@ -57,9 +57,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 437,
+        "id": 542,
         "linearizedBaseContracts": [
-          437
+          542
         ],
         "name": "IUniswapV1Factory",
         "nodeType": "ContractDefinition",
@@ -68,7 +68,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "06f2bf62",
-            "id": 436,
+            "id": 541,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -76,18 +76,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 432,
+              "id": 537,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 431,
+                  "id": 536,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 436,
-                  "src": "84:7:4",
+                  "scope": 541,
+                  "src": "84:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -95,10 +95,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 430,
+                    "id": 535,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "84:7:4",
+                    "src": "84:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -109,21 +109,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "83:9:4"
+              "src": "83:9:7"
             },
             "returnParameters": {
-              "id": 435,
+              "id": 540,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 434,
+                  "id": 539,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 436,
-                  "src": "116:7:4",
+                  "scope": 541,
+                  "src": "116:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -131,10 +131,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 433,
+                    "id": 538,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "116:7:4",
+                    "src": "116:7:7",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -145,27 +145,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "115:9:4"
+              "src": "115:9:7"
             },
-            "scope": 437,
-            "src": "63:62:4",
+            "scope": 542,
+            "src": "63:62:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 438,
-        "src": "28:100:4"
+        "scope": 543,
+        "src": "28:100:7"
       }
     ],
-    "src": "0:130:4"
+    "src": "0:130:7"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/interfaces/V1/IUniswapV1Factory.sol",
       "exportedSymbols": {
         "IUniswapV1Factory": [
-          437
+          542
         ]
       }
     },
@@ -179,9 +179,9 @@
             ".0"
           ]
         },
-        "id": 429,
+        "id": 534,
         "name": "PragmaDirective",
-        "src": "0:24:4"
+        "src": "0:24:7"
       },
       {
         "attributes": {
@@ -196,10 +196,10 @@
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            437
+            542
           ],
           "name": "IUniswapV1Factory",
-          "scope": 438
+          "scope": 543
         },
         "children": [
           {
@@ -215,7 +215,7 @@
               ],
               "name": "getExchange",
               "overrides": null,
-              "scope": 437,
+              "scope": 542,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -229,7 +229,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 436,
+                      "scope": 541,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -243,19 +243,19 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 430,
+                        "id": 535,
                         "name": "ElementaryTypeName",
-                        "src": "84:7:4"
+                        "src": "84:7:7"
                       }
                     ],
-                    "id": 431,
+                    "id": 536,
                     "name": "VariableDeclaration",
-                    "src": "84:7:4"
+                    "src": "84:7:7"
                   }
                 ],
-                "id": 432,
+                "id": 537,
                 "name": "ParameterList",
-                "src": "83:9:4"
+                "src": "83:9:7"
               },
               {
                 "children": [
@@ -265,7 +265,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 436,
+                      "scope": 541,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -279,42 +279,42 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 433,
+                        "id": 538,
                         "name": "ElementaryTypeName",
-                        "src": "116:7:4"
+                        "src": "116:7:7"
                       }
                     ],
-                    "id": 434,
+                    "id": 539,
                     "name": "VariableDeclaration",
-                    "src": "116:7:4"
+                    "src": "116:7:7"
                   }
                 ],
-                "id": 435,
+                "id": 540,
                 "name": "ParameterList",
-                "src": "115:9:4"
+                "src": "115:9:7"
               }
             ],
-            "id": 436,
+            "id": 541,
             "name": "FunctionDefinition",
-            "src": "63:62:4"
+            "src": "63:62:7"
           }
         ],
-        "id": 437,
+        "id": 542,
         "name": "ContractDefinition",
-        "src": "28:100:4"
+        "src": "28:100:7"
       }
     ],
-    "id": 438,
+    "id": 543,
     "name": "SourceUnit",
-    "src": "0:130:4"
+    "src": "0:130:7"
   },
   "compiler": {
     "name": "solc",
     "version": "0.6.6+commit.6c089d02.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.3.4",
-  "updatedAt": "2021-07-03T18:14:31.476Z",
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-07-12T08:09:07.922Z",
   "devdoc": {
     "methods": {}
   },
