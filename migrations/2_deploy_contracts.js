@@ -25,15 +25,15 @@ module.exports = async function (deployer, network) {
   let router = await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
   const ROUTER = await Router.deployed();
 
-  // const route = new web3.eth.Contract(ROUTER.abi, ROUTER.address);
+  const route = new web3.eth.Contract(ROUTER.abi, ROUTER.address);
   
   let bal1 = await token1.methods.balanceOf(account_address).call()
   let bal2 = await token2.methods.balanceOf(account_address).call()
 
   console.log(bal1, bal2)
  
-  let ap1 = await token1.methods.approve(ROUTER.address, 100000).send({from:account_address});
-  let ap2 = await token2.methods.approve(ROUTER.address, 100000).send({from:account_address});
+  let ap1 = await token1.methods.approve(ROUTER.address, 1000000000).send({from:account_address});
+  let ap2 = await token2.methods.approve(ROUTER.address, 1000000000).send({from:account_address});
 
  let a1 = await  token1.methods.allowance(account_address, ROUTER.address).call()
  let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
@@ -43,7 +43,7 @@ module.exports = async function (deployer, network) {
 
   // console.log(await route.methods.factory().call())
 
-   await ROUTER.addLiquidity(
+  console.log( await route.methods.addLiquidity(
     token1Address, 
     token2Address, 
     100000,
@@ -51,21 +51,25 @@ module.exports = async function (deployer, network) {
     100,
     100,
     account_address, 
-    Math.floor(Date.now()/100) + 60 * 30,
-    {from:account_address}
+    Math.floor(Date.now()/100) + 60 * 30
+    // {from:account_address}
   
-  )
+  ).call())
 
- await ROUTER.removeLiquidity(
+  console.log(await route.methods.getAmountsOut(100000, [token1Address, token2Address]).call())
 
-  "0xD2E45402cf17E84f70A92aE33e773019Be7ee01D",
-  10,
-  10,
-  1,
-  1,
-  "0x6CaF44C89Af182202398fe924588C37B1E604C79",
- Math.floor(Date.now()/100) + 60 * 5
- )
+//  console.log(await route.methods.removeLiquidity(
+
+//  token1Address,
+//  token2Address,
+//   74831,
+//   100,
+//   100,
+//   account_address,
+//  Math.floor(Date.now()/100) + 60 * 5
+//  ).call())
+
+
 
 };
 
