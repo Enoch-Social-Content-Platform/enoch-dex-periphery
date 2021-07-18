@@ -6,10 +6,10 @@ const {abi: Token2_ABI} = require("../build/contracts/Token2.json");
 
 module.exports = async function (deployer, network) {
   let weth;
-  const FACTORY_ADDRESS = '0xf1fc38C645454bdA0bF0E6a4d646Afeff86BE0Ee';// getting from core contract
-  token1Address = "0xc0E740877fE5F0189531c96351Ad140E1d799fD0";
-  token2Address = "0x661a64d3EB0f0cbE77d17695dA68f1Bb817A17BA";
-  account_address = "0x2048A1703888d05e11979B40AEc2Bc6B1AFf84eE";
+  const FACTORY_ADDRESS = '0xC27BE6c4A4eEa7920f0C30a3f7913fD92383b329';// getting from core contract
+  token1Address = "0x7ba0b55a2F4eB010fd16548CcEE7D64E04462E56";
+  token2Address = "0x8c30f41Bf0a40C6156C7C7d19676c1DB43dc5771";
+  account_address = "0x4706D454Fd2CDAb5a3aEaC578335f6eD634FaAbC";
 
   const token1 = new web3.eth.Contract(Token1_ABI, token1Address);
   const token2 = new web3.eth.Contract(Token2_ABI, token2Address);
@@ -43,7 +43,7 @@ module.exports = async function (deployer, network) {
 
   // console.log(await route.methods.factory().call())
 
-  console.log( await route.methods.addLiquidity(
+  console.log( await ROUTER.addLiquidity(
     token1Address, 
     token2Address, 
     100000,
@@ -51,12 +51,12 @@ module.exports = async function (deployer, network) {
     100,
     100,
     account_address, 
-    Math.floor(Date.now()/100) + 60 * 30
-    // {from:account_address}
+    Math.floor(Date.now()/1000) + (1*60*60),
+    {from:account_address}
   
-  ).call())
+  ))
 
-  console.log(await route.methods.getAmountsOut(100000, [token1Address, token2Address]).call())
+  // console.log(await route.methods.getAmountsOut(100000, [token1Address, token2Address]).call())
 
 //  console.log(await route.methods.removeLiquidity(
 
