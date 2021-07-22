@@ -43,16 +43,16 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"last_completed_migration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"completed\",\"type\":\"uint256\"}],\"name\":\"setCompleted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/godambe/dhruv1584/finaxis/enoch-dex-periphery/contracts/Migrations.sol\":\"Migrations\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"/Users/godambe/dhruv1584/finaxis/enoch-dex-periphery/contracts/Migrations.sol\":{\"keccak256\":\"0x7eaedbb1a3e4e0f585d9063393872f88ded247ca3c3c3c8492ea18e7629a6411\",\"urls\":[\"bzz-raw://4a3eb571cee910095df65a06a1c1d3f89187c72a3c184ef87a7538d9aa39ad07\",\"dweb:/ipfs/QmdqR3vrSSGR49qFGZr49Mb39z7dgD6tSzEDoaqtM31o61\"]}},\"version\":1}",
-  "bytecode": "0x6080604052600080546001600160a01b0319163317905534801561002257600080fd5b506101b0806100326000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063445df0ac146100465780638da5cb5b14610060578063fdacd57614610091575b600080fd5b61004e6100b0565b60408051918252519081900360200190f35b6100686100b6565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ae600480360360208110156100a757600080fd5b50356100d2565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff163314610142576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101486033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a2646970667358221220573b5d180d325d901faa15bcd3e076fe488c6e577a8293d3446bba4cbce9972664736f6c63430006060033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063445df0ac146100465780638da5cb5b14610060578063fdacd57614610091575b600080fd5b61004e6100b0565b60408051918252519081900360200190f35b6100686100b6565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ae600480360360208110156100a757600080fd5b50356100d2565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff163314610142576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101486033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a2646970667358221220573b5d180d325d901faa15bcd3e076fe488c6e577a8293d3446bba4cbce9972664736f6c63430006060033",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"last_completed_migration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"completed\",\"type\":\"uint256\"}],\"name\":\"setCompleted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/Migrations.sol\":\"Migrations\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/Migrations.sol\":{\"keccak256\":\"0x7eaedbb1a3e4e0f585d9063393872f88ded247ca3c3c3c8492ea18e7629a6411\",\"urls\":[\"bzz-raw://4a3eb571cee910095df65a06a1c1d3f89187c72a3c184ef87a7538d9aa39ad07\",\"dweb:/ipfs/QmdqR3vrSSGR49qFGZr49Mb39z7dgD6tSzEDoaqtM31o61\"]}},\"version\":1}",
+  "bytecode": "0x6080604052600080546001600160a01b0319163317905534801561002257600080fd5b506101b0806100326000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063445df0ac146100465780638da5cb5b14610060578063fdacd57614610091575b600080fd5b61004e6100b0565b60408051918252519081900360200190f35b6100686100b6565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ae600480360360208110156100a757600080fd5b50356100d2565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff163314610142576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101486033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a264697066735822122070838d61e492f2230dac263a13c6297822064beb427f091f3b0d8e30582ebe3f64736f6c63430006060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063445df0ac146100465780638da5cb5b14610060578063fdacd57614610091575b600080fd5b61004e6100b0565b60408051918252519081900360200190f35b6100686100b6565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100ae600480360360208110156100a757600080fd5b50356100d2565b005b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60005473ffffffffffffffffffffffffffffffffffffffff163314610142576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101486033913960400191505060405180910390fd5b60015556fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a264697066735822122070838d61e492f2230dac263a13c6297822064beb427f091f3b0d8e30582ebe3f64736f6c63430006060033",
   "immutableReferences": {},
   "sourceMap": "66:352:0:-:0;;;90:33;;;-1:-1:-1;;;;;;90:33:0;113:10;90:33;;;66:352;2:2:-1;;;;27:1;24;17:12;2:2;66:352:0;;;;;;;",
   "deployedSourceMap": "66:352:0:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;66:352:0;;;;;;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;127:36:0;;;:::i;:::-;;;;;;;;;;;;;;;;90:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;313:103;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;-1:-1;313:103:0;;:::i;:::-;;127:36;;;;:::o;90:33::-;;;;;;:::o;313:103::-;225:5;;;;211:10;:19;196:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;375:24:::1;:36:::0;313:103::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Migrations {\n  address public owner = msg.sender;\n  uint public last_completed_migration;\n\n  modifier restricted() {\n    require(\n      msg.sender == owner,\n      \"This function is restricted to the contract's owner\"\n    );\n    _;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n}\n",
-  "sourcePath": "/Users/godambe/dhruv1584/finaxis/enoch-dex-periphery/contracts/Migrations.sol",
+  "sourcePath": "E:/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/Migrations.sol",
   "ast": {
-    "absolutePath": "/Users/godambe/dhruv1584/finaxis/enoch-dex-periphery/contracts/Migrations.sol",
+    "absolutePath": "/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/Migrations.sol",
     "exportedSymbols": {
       "Migrations": [
         32
@@ -471,7 +471,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/Users/godambe/dhruv1584/finaxis/enoch-dex-periphery/contracts/Migrations.sol",
+      "absolutePath": "/E/sanya/Blockchain lab/DEX/enoch-dex-periphery/contracts/Migrations.sol",
       "exportedSymbols": {
         "Migrations": [
           32
@@ -937,15 +937,15 @@
     "version": "0.6.6+commit.6c089d02.Emscripten.clang"
   },
   "networks": {
-    "5777": {
+    "1626617794518": {
       "events": {},
       "links": {},
-      "address": "0x45C2fd1a3e7f5A5614DCcd086aE6c80A50b994B1",
-      "transactionHash": "0xc313af60a65015d6f01f2b41c73ae9ac94c92253db7b0d1c0b839ea1b635e7ee"
+      "address": "0x0F2d23d60E7dFfdaa86deABb3cD27600E6F89295",
+      "transactionHash": "0xbf44fab8791188d5e12ae5119c9caddf60d84c653605faa5aaa1af33a25c1e50"
     }
   },
-  "schemaVersion": "3.3.4",
-  "updatedAt": "2021-07-18T11:27:00.537Z",
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-07-21T09:52:02.007Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
