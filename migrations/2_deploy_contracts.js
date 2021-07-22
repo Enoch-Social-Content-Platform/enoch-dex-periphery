@@ -80,13 +80,34 @@ module.exports = async function (deployer, network) {
   // Transfer token 1 to token 2
   // Transfer token 1 to address[1] 
   // msg.sender should have already given the router an allowance of at least amountIn on the input token.
+  
   account_address2 = "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0";
-  await token1.methods.transfer(account_address2, 1000).send({from:account_address});
-  console.log("Balance of Token1 in 2nd account",await token1.methods.balanceOf(account_address2).call())
+  // await token1.methods.transfer(account_address2, 1000).send({from:account_address});
+  // console.log("Balance of Token1 in 2nd account",await token1.methods.balanceOf(account_address2).call())
+  await token1.methods.approve(ROUTER.address, 100).send({from:account_address2});
+  let a4 = await  token1.methods.allowance(account_address2, ROUTER.address).call()
+  console.log(a4)
 
 
+  // uint amountOut,
+  // uint amountInMax,
+  // address[] calldata path,
+  // address to,
+  // uint deadline
+  path = [token1Address, token2Address];
+  console.log(await route.methods.swapTokensForExactTokens(
+    20,
+    50,
+    path,
+    account_address2,
+    Math.floor(Date.now()/100) + 60 * 10,
 
 
+  ).call({from:account_address2}))
+
+
+  let bal3 = await token2.methods.balanceOf(account_address2).call()
+  console.log("token2 balance in address 2",bal3)
 
 
 
@@ -111,6 +132,7 @@ module.exports = async function (deployer, network) {
 
 // ).call({from:account_address}))
 
+// Another way of using removeLiquidity
   
 //  console.log(await ROUTER.removeLiquidity(
 //  token1Address,
