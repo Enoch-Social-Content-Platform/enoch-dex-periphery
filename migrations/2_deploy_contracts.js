@@ -2,10 +2,10 @@
 const Router = artifacts.require("UniswapV2Router02.sol");
 const WETH = artifacts.require("WETH.sol");
 
-
 const { abi: Token1_ABI } = require("../build/contracts/Token1.json");
 const {abi: Token2_ABI} = require("../build/contracts/Token2.json");
 const {abi: EnochV2ERC20_ABI} = require("../build/contracts/EnochV2ERC20.json");
+const {abi: EnochV2Factory_ABI} = require("../build/contracts/EnochV2Factory.json");
 
 
 
@@ -22,7 +22,7 @@ module.exports = async function (deployer, network) {
   const token2 = new web3.eth.Contract(Token2_ABI, token2Address);
 
   const V2ERC20 = new web3.eth.Contract(EnochV2ERC20_ABI, pairAddress);
-  
+  const factoryContract = new web3.eth.Contract(EnochV2Factory_ABI, FACTORY_ADDRESS);
   
   if(network === 'mainnet'){
       weth = await WETH.at('0xB1BAB8754079ed93F4DD9E73aaaCC64fB921bCF2');
@@ -49,6 +49,20 @@ module.exports = async function (deployer, network) {
   let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
 
   console.log("Address of Weth",weth.address);
+  
+  const Weth = new web3.eth.Contract(WETH.abi, weth.address);
+
+  await Weth.methods.deposit().send({
+    value:  1000,
+    from: account_address
+  })
+
+  console.log(await Weth.methods.totalSupply().call())
+  
+  // await weth.transfer(account_address, 10000);
+  // console.log(await weth.approve(ROUTER.address,100).send({from:account_address}));
+  // await factoryContract.methods.createPair(weth.address, token2Address);
+  // console.log("Pair address: ", await factoryContract.methods.getPair(token1Address, token2Address));
 
 //  console.log(await ROUTER.addLiquidity(
 //   token1Address, 
