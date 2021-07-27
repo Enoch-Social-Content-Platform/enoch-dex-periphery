@@ -48,19 +48,20 @@ module.exports = async function (deployer, network) {
   let a1 = await  token1.methods.allowance(account_address, ROUTER.address).call()
   let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
 
+  console.log("Address of Weth",weth.address);
 
- console.log(await ROUTER.addLiquidity(
-  token1Address, 
-  token2Address, 
-  100000,
-  100000,
-  100,
-  100,
-  account_address, 
-  Math.floor(Date.now()/1000) + (1*60*60),
-  {from:account_address}
+//  console.log(await ROUTER.addLiquidity(
+//   token1Address, 
+//   token2Address, 
+//   100000,
+//   100000,
+//   100,
+//   100,
+//   account_address, 
+//   Math.floor(Date.now()/1000) + (1*60*60),
+//   {from:account_address}
 
-))
+// ))
 
 // console.log(await route.methods.addLiquidity(
 //   token1Address, 
@@ -81,12 +82,12 @@ module.exports = async function (deployer, network) {
   // Transfer token 1 to address[1] 
   // msg.sender should have already given the router an allowance of at least amountIn on the input token.
   
-  account_address2 = "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0";
-  // await token1.methods.transfer(account_address2, 1000).send({from:account_address});
-  // console.log("Balance of Token1 in 2nd account",await token1.methods.balanceOf(account_address2).call())
-  await token1.methods.approve(ROUTER.address, 100).send({from:account_address2});
-  let a4 = await  token1.methods.allowance(account_address2, ROUTER.address).call()
-  console.log(a4)
+  // account_address2 = "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0";
+  // // await token1.methods.transfer(account_address2, 1000).send({from:account_address});
+  // // console.log("Balance of Token1 in 2nd account",await token1.methods.balanceOf(account_address2).call())
+  // await token1.methods.approve(ROUTER.address, 100).send({from:account_address2});
+  // let a4 = await  token1.methods.allowance(account_address2, ROUTER.address).call()
+  // console.log(a4)
 
 
   // uint amountOut,
@@ -94,20 +95,20 @@ module.exports = async function (deployer, network) {
   // address[] calldata path,
   // address to,
   // uint deadline
-  path = [token1Address, token2Address];
-  console.log(await route.methods.swapTokensForExactTokens(
-    20,
-    50,
-    path,
-    account_address2,
-    Math.floor(Date.now()/100) + 60 * 10,
+  // path = [token1Address, token2Address];
+  // console.log(await route.methods.swapTokensForExactTokens(
+  //   20,
+  //   50,
+  //   path,
+  //   account_address2,
+  //   Math.floor(Date.now()/100) + 60 * 10,
 
 
-  ).call({from:account_address2}))
+  // ).call({from:account_address2}))
 
 
-  let bal3 = await token2.methods.balanceOf(account_address2).call()
-  console.log("token2 balance in address 2",bal3)
+  // let bal3 = await token2.methods.balanceOf(account_address2).call()
+  // console.log("token2 balance in address 2",bal3)
 
 
 
@@ -144,6 +145,37 @@ module.exports = async function (deployer, network) {
 //  Math.floor(Date.now()/100) + 60 * 10,
 //  {from:account_address}
 //  ))
+
+
+//Weth and token2 provide Liquidity, swap, and, remove liquidity
+
+// addLiquidityETH(
+//   address token,
+//   uint amountTokenDesired,
+//   uint amountTokenMin,
+//   uint amountETHMin,
+//   address to,
+//   uint deadline
+
+
+// console.log(await route.methods.addLiquidityETH(
+//   token2Address, 
+//   10000,
+//   10000,
+//   100,
+//   100,
+//   account_address, 
+//   Math.floor(Date.now()/1000) + (1*60*60),
+
+// ).call({from:account_address}))
+
+
+
+
+
+
+
+
 
 
 
