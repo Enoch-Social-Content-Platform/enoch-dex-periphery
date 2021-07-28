@@ -17,10 +17,8 @@ module.exports = async function (deployer, network) {
   account_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
   // EnochV2ERC20_address = "0xC5aFE31AE505594B190AC71EA689B58139d1C354";
   pairAddress  = "0xa13a25a0B3f75011429Ae81552a65FCCDF78ce65";
-  
   const token1 = new web3.eth.Contract(Token1_ABI, token1Address);
   const token2 = new web3.eth.Contract(Token2_ABI, token2Address);
-
   const V2ERC20 = new web3.eth.Contract(EnochV2ERC20_ABI, pairAddress);
  
   if(network === 'mainnet'){
@@ -36,34 +34,34 @@ module.exports = async function (deployer, network) {
  
   const route = new web3.eth.Contract(ROUTER.abi, ROUTER.address);
 
+  const Weth_address = "0x9561C133DD8580860B6b7E504bC5Aa500f0f06a7";
+  const Weth = new web3.eth.Contract(WETH.abi, Weth_address);
+
+  // const Weth_token3_address = new web3.eth.Contract(WETH.abi, Weth_address);
+
   let bal1 = await token1.methods.balanceOf(account_address).call()
   let bal2 = await token2.methods.balanceOf(account_address).call()
 
   console.log(bal1, bal2)
 
   let ap1 = await token1.methods.approve(ROUTER.address, 1000000).send({from:account_address});
-  let ap2 = await token2.methods.approve(ROUTER.address, 1000000).send({from:account_address});
+  let ap2 = await token2.methods.approve(ROUTER.address, 9000000).send({from:account_address});
 
   let a1 = await  token1.methods.allowance(account_address, ROUTER.address).call()
   let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
-
-  console.log("Address of Weth",weth.address);
-
-  const Weth = new web3.eth.Contract(WETH.abi, weth.address);
-
+ console.log(a1, a2);
+  
   await Weth.methods.deposit().send({
     value:  10000,
     from: account_address
   })
 
-  console.log(await Weth.methods.totalSupply().call())
-
-  await Weth.methods.transfer(ROUTER.address,9500)
-
-  let ap3 = await Weth.methods.approve(ROUTER.address,9500).send({from:account_address})
-  // console.log(ap3)
-
-  //Weth and token2 provide Liquidity, swap, and, remove liquidity
+  console.log(await Weth.methods.totalSupply().call()) //301000
+  
+  console.log(await Weth.methods.transferFrom(account_address, ROUTER.address, 20000).call());
+  await Weth.methods.approve(ROUTER.address, 10000).send({from:account_address});
+  
+// Weth and token2 provide Liquidity, swap, and, remove liquidity
 
 // addLiquidityETH(
 //   address token,
@@ -73,16 +71,15 @@ module.exports = async function (deployer, network) {
 //   address to,
 //   uint deadline
 
-//  console.log(await ROUTER.addLiquidityETH(
-//   token2Address, 
-//   100,
-//   10,
-//   10,
-//   account_address, 
-//   Math.floor(Date.now()/1000) + (1*60*60),
-//   {from:account_address}
-
-// ))
+ console.log(await route.methods.addLiquidityETH(
+  token2Address, 
+  1000,
+  100,
+  10,
+  account_address, 
+  Math.floor(Date.now()/1000) + 60 * 10,
+).call({ value:  10000,
+  from: account_address}))
 
 // console.log(await route.methods.addLiquidity(
 //   token1Address, 
@@ -166,25 +163,6 @@ module.exports = async function (deployer, network) {
 //  Math.floor(Date.now()/100) + 60 * 10,
 //  {from:account_address}
 //  ))
-
-
-
-
-
-// console.log(await route.methods.addLiquidityETH(
-//   token2Address, 
-//   10000,
-//   10000,
-//   100,
-//   100,
-//   account_address, 
-//   Math.floor(Date.now()/1000) + (1*60*60),
-
-// ).call({from:account_address}))
-
-
-
-
 
 
 
