@@ -44,15 +44,15 @@ module.exports = async function (deployer, network) {
   let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
   console.log("Allowance for Token2", a2);
   
-  await Weth.methods.deposit().send({
-    value:  20000,
-    from: account_address
-  })
+//   await Weth.methods.deposit().send({
+//     value:  20000,
+//     from: account_address
+//   })
 
   console.log(await Weth.methods.totalSupply().call()) 
   
-  console.log(await Weth.methods.transferFrom(account_address, ROUTER.address, 20000).call());
-  await Weth.methods.approve(ROUTER.address, 10000).send({from:account_address});
+  console.log(await Weth.methods.transferFrom(account_address, ROUTER.address, 90000).call());
+  await Weth.methods.approve(ROUTER.address, 90000).send({from:account_address});
 
   /*
    * Weth and token2 provide Liquidity, Swap, and, Remove liquidity
@@ -87,11 +87,11 @@ module.exports = async function (deployer, network) {
 await ROUTER.addLiquidityETH(
   token2Address, 
   10000,
-  1000,
-  10,
+  5000,
+  3000,
   account_address, 
   Math.floor(Date.now()/1000) + 60 * 20,
-  {value: 3000,
+  {value: 5000,
   from: account_address}
 )
 // // .call({ 
@@ -102,38 +102,47 @@ await ROUTER.addLiquidityETH(
   // // Returns the amount of pool tokens owned by an address.
 console.log("amount of pool tokens owned by an address",await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
   
-  // // Returns the total amount of pool tokens for a pair.
-  // console.log("total amount of pool tokens",await V2ERC20_weth_pair.methods.totalSupply().call())
+  // Returns the total amount of pool tokens for a pair.
+  console.log("total amount of pool tokens",await V2ERC20_weth_pair.methods.totalSupply().call())
 
-// path = [Weth_address, token2Address];
-// // console.log(
-// await ROUTER.swapExactETHForTokens(
-//   10000,
-//   path,
-//   account_address2,
-//   Math.floor(Date.now()/1000) + 60 * 20,
-//   {value: 5000, from:account_address2}
-//  )
-// //  .call({value: 1000,from:account_address2}))
-//  let bal3 = await token2.methods.balanceOf(account_address2).call()
-// console.log("token2 balance in address 2",bal3)
+
+//   swapExactETHForTokens
+
+// function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
+//   external
+//   payable
+//   returns (uint[] memory amounts);
+
+// Swaps an exact amount of ETH for as many output tokens as possible, along the route determined by the path. The first element of path must be WETH, 
+path = [Weth_address, token2Address];
+// console.log(
+await ROUTER.swapExactETHForTokens(
+  1000,
+  path,
+  account_address2,
+  Math.floor(Date.now()/1000) + 60 * 20,
+  {value: 5000, from:account_address2}
+ )
+//  .call({value: 1000,from:account_address2}))
+ let bal3 = await token2.methods.balanceOf(account_address2).call()
+console.log("token2 balance in address 2",bal3)
 
 await V2ERC20_weth_pair.methods.approve(ROUTER.address, 15000).send({from:account_address});
 let a3 = await V2ERC20_weth_pair.methods.allowance(account_address, ROUTER.address).call();
 console.log(a3);
 
 //   console.log(
-await ROUTER.removeLiquidityETH(
-  token2Address, 
-  5000,
-  100,
-  10,
-  account_address, 
-  Math.floor(Date.now()/1000) + 60 * 20,
-  {from: account_address}
-)
+// await ROUTER.removeLiquidityETH(
+//   token2Address, 
+//   5000,
+//   100,
+//   10,
+//   account_address, 
+//   Math.floor(Date.now()/1000) + 60 * 20,
+//   {from: account_address}
+// )
 
-console.log("amount of pool tokens left after removal",await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
+// console.log("amount of pool tokens left after removal",await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
 // .call({
 //   from: account_address}))
 
