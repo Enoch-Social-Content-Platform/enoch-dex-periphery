@@ -102,22 +102,22 @@ console.log("Liquidity for ERC20-ERC20 tokens available:",await V2ERC20.methods.
 */
   console.log("Liquidity for ERC20-ERC20 tokens available:",await V2ERC20.methods.balanceOf(account_address).call())
    
-  await V2ERC20.methods.approve(ROUTER.address, 10000).send({from:account_address})
-  let a3 = await V2ERC20.methods.allowance(account_address, ROUTER.address).call()
-  console.log(a3);
+//   await V2ERC20.methods.approve(ROUTER.address, 10000).send({from:account_address})
+//   let a3 = await V2ERC20.methods.allowance(account_address, ROUTER.address).call()
+//   console.log(a3);
 
- await ROUTER.removeLiquidity(
- token1Address,
- token2Address,
- 10000,
- 100,
- 100,
- account_address,
- Math.floor(Date.now()/100) + 60 * 10,
- {from:account_address}
- )
+//  await ROUTER.removeLiquidity(
+//  token1Address,
+//  token2Address,
+//  10000,
+//  100,
+//  100,
+//  account_address,
+//  Math.floor(Date.now()/100) + 60 * 10,
+//  {from:account_address}
+//  )
 
-console.log("Liquidity Removed for ERC20-ERC20 tokens available:",await V2ERC20.methods.balanceOf(account_address).call())
+// console.log("Liquidity Removed for ERC20-ERC20 tokens available:",await V2ERC20.methods.balanceOf(account_address).call())
 
 };
 
