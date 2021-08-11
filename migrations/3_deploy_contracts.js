@@ -8,13 +8,13 @@ const {abi: EnochV2ERC20_ABI} = require("../build/contracts/EnochV2ERC20.json");
 
 // // const {abi: WETH3_ABI} = require("../build/contracts/WETH3.json")
 
-module.exports = async function (deployer, network) {
+module.exports = async function (deployer, network, accounts) {
   let weth;
-  const FACTORY_ADDRESS = '0xCfEB869F69431e42cdB54A4F4f105C19C080A601';// getting from core contract
-  token2Address = "0xD833215cBcc3f914bD1C9ece3EE7BF8B14f841bb";
-  account_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1";
-  account_address2 = "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0";
-  weth_pair_address = "0xb7e1185C294D2d92163AED346BA15cB3E41fAe8b";
+  const FACTORY_ADDRESS = '0x55D6cdE8E89d9752472703FE396899daF6276574';// getting from core contract
+  token2Address = "0x2ad2d5B847E53d619AC2E4b68487311277B8c850";
+  account_address = accounts[0];
+  account_address2 = accounts[1];
+  weth_pair_address = "0x189A10b486F8b7B26db0a24906822f01681a1bb1";
 
   
   const token2 = new web3.eth.Contract(Token2_ABI, token2Address);
@@ -28,7 +28,7 @@ module.exports = async function (deployer, network) {
       weth = await WETH.deployed();
   }
 
-  const Weth_address = "0x9561C133DD8580860B6b7E504bC5Aa500f0f06a7";
+  const Weth_address = "0x81d43207dEb8e3bAD1D82710b9D14010F5E041Fd";
   let router = await deployer.deploy(Router, FACTORY_ADDRESS, Weth_address);
   // let router = await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
   const ROUTER = await Router.deployed();
@@ -84,16 +84,16 @@ module.exports = async function (deployer, network) {
    */
 
 
-await ROUTER.addLiquidityETH(
-  token2Address, 
-  10000,
-  3000,
-  2000,
-  account_address, 
-  Math.floor(Date.now()/1000) + 60 * 20,
-  {value: 5000,
-  from: account_address}
-)
+// await ROUTER.addLiquidityETH(
+//   token2Address, 
+//   10000,
+//   3000,
+//   2000,
+//   account_address, 
+//   Math.floor(Date.now()/1000) + 60 * 20,
+//   {value: 5000,
+//   from: account_address}
+// )
 
   // // Returns the amount of pool tokens owned by an address.
 console.log("amount of pool tokens owned by an address",await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
@@ -111,35 +111,37 @@ console.log("amount of pool tokens owned by an address",await V2ERC20_weth_pair.
 
 // Swaps an exact amount of ETH for as many output tokens as possible, along the route determined by the path. The first element of path must be WETH, 
 
-path = [Weth_address, token2Address];
-
-await ROUTER.swapExactETHForTokens(
-  1000,
-  path,
-  account_address2,
-  Math.floor(Date.now()/1000) + 60 * 20,
-  {value: 5000, from:account_address2}
- )
-
- let bal3 = await token2.methods.balanceOf(account_address2).call()
-console.log("token2 balance in address 2",bal3)
-
-await V2ERC20_weth_pair.methods.approve(ROUTER.address, 8000).send({from:account_address});
-let a3 = await V2ERC20_weth_pair.methods.allowance(account_address, ROUTER.address).call();
-console.log(a3);
 
 
-await ROUTER.removeLiquidityETH(
-  token2Address, 
-  5000,
-  100,
-  10,
-  account_address, 
-  Math.floor(Date.now()/1000) + 60 * 20,
-  {from: account_address}
-)
+// path = [Weth_address, token2Address];
 
-console.log("amount of pool tokens left after removal",await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
+// await ROUTER.swapExactETHForTokens(
+//   1000,
+//   path,
+//   account_address2,
+//   Math.floor(Date.now()/1000) + 60 * 20,
+//   {value: 5000, from:account_address2}
+//  )
+
+//  let bal3 = await token2.methods.balanceOf(account_address2).call()
+// console.log("token2 balance in address 2",bal3)
+
+// await V2ERC20_weth_pair.methods.approve(ROUTER.address, 8000).send({from:account_address});
+// let a3 = await V2ERC20_weth_pair.methods.allowance(account_address, ROUTER.address).call();
+// console.log(a3);
+
+
+// await ROUTER.removeLiquidityETH(
+//   token2Address, 
+//   5000,
+//   100,
+//   10,
+//   account_address, 
+//   Math.floor(Date.now()/1000) + 60 * 20,
+//   {from: account_address}
+// )
+
+// console.log("amount of pool tokens left after removal",await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
 
 
 

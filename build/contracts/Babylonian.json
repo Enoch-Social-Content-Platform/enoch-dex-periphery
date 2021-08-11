@@ -8,7 +8,7 @@
   "sourceMap": "210:1371:27:-:0;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
   "deployedSourceMap": "210:1371:27:-:0;;;;;;12:1:-1;9;2:12",
   "source": "// SPDX-License-Identifier: GPL-3.0-or-later\n\npragma solidity >=0.4.0;\n\n// computes square roots using the babylonian method\n// https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method\nlibrary Babylonian {\n    // credit for this implementation goes to\n    // https://github.com/abdk-consulting/abdk-libraries-solidity/blob/master/ABDKMath64x64.sol#L687\n    function sqrt(uint256 x) internal pure returns (uint256) {\n        if (x == 0) return 0;\n        // this block is equivalent to r = uint256(1) << (BitMath.mostSignificantBit(x) / 2);\n        // however that code costs significantly more gas\n        uint256 xx = x;\n        uint256 r = 1;\n        if (xx >= 0x100000000000000000000000000000000) {\n            xx >>= 128;\n            r <<= 64;\n        }\n        if (xx >= 0x10000000000000000) {\n            xx >>= 64;\n            r <<= 32;\n        }\n        if (xx >= 0x100000000) {\n            xx >>= 32;\n            r <<= 16;\n        }\n        if (xx >= 0x10000) {\n            xx >>= 16;\n            r <<= 8;\n        }\n        if (xx >= 0x100) {\n            xx >>= 8;\n            r <<= 4;\n        }\n        if (xx >= 0x10) {\n            xx >>= 4;\n            r <<= 2;\n        }\n        if (xx >= 0x8) {\n            r <<= 1;\n        }\n        r = (r + x / r) >> 1;\n        r = (r + x / r) >> 1;\n        r = (r + x / r) >> 1;\n        r = (r + x / r) >> 1;\n        r = (r + x / r) >> 1;\n        r = (r + x / r) >> 1;\n        r = (r + x / r) >> 1; // Seven iterations should be enough\n        uint256 r1 = x / r;\n        return (r < r1 ? r : r1);\n    }\n}\n",
-  "sourcePath": "@uniswap\\lib\\contracts\\libraries\\Babylonian.sol",
+  "sourcePath": "@uniswap/lib/contracts/libraries/Babylonian.sol",
   "ast": {
     "absolutePath": "@uniswap/lib/contracts/libraries/Babylonian.sol",
     "exportedSymbols": {
@@ -5715,8 +5715,8 @@
     "version": "0.6.6+commit.6c089d02.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.1",
-  "updatedAt": "2021-07-21T09:50:26.433Z",
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-08-11T05:02:55.131Z",
   "devdoc": {
     "methods": {}
   },
