@@ -9,7 +9,7 @@ const {abi: EnochV2ERC20_ABI} = require("../build/contracts/EnochV2ERC20.json");
 
 module.exports = async function (deployer, network, accounts) {
   let weth;
-  const FACTORY_ADDRESS = '0x55D6cdE8E89d9752472703FE396899daF6276574';// getting from core contract
+  const FACTORY_ADDRESS = '0xCfEB869F69431e42cdB54A4F4f105C19C080A601';// getting from core contract
   // token1Address = "0xEE48726f440191Be73bE07034E94B08aDcd02D80";
   // token2Address = "0x2ad2d5B847E53d619AC2E4b68487311277B8c850";
   // account_address = accounts[0];

@@ -10,11 +10,11 @@ const {abi: EnochV2ERC20_ABI} = require("../build/contracts/EnochV2ERC20.json");
 
 module.exports = async function (deployer, network, accounts) {
   let weth;
-  const FACTORY_ADDRESS = '0x55D6cdE8E89d9752472703FE396899daF6276574';// getting from core contract
-  token2Address = "0x2ad2d5B847E53d619AC2E4b68487311277B8c850";
+  const FACTORY_ADDRESS = '0xCfEB869F69431e42cdB54A4F4f105C19C080A601';// getting from core contract
+  token2Address = "0xD833215cBcc3f914bD1C9ece3EE7BF8B14f841bb";
   account_address = accounts[0];
   account_address2 = accounts[1];
-  weth_pair_address = "0x189A10b486F8b7B26db0a24906822f01681a1bb1";
+  weth_pair_address = "0xb7e1185C294D2d92163AED346BA15cB3E41fAe8b";
 
   
   const token2 = new web3.eth.Contract(Token2_ABI, token2Address);
@@ -28,7 +28,7 @@ module.exports = async function (deployer, network, accounts) {
       weth = await WETH.deployed();
   }
 
-  const Weth_address = "0x81d43207dEb8e3bAD1D82710b9D14010F5E041Fd";
+  const Weth_address = "0x9561C133DD8580860B6b7E504bC5Aa500f0f06a7";
   let router = await deployer.deploy(Router, FACTORY_ADDRESS, Weth_address);
   // let router = await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
   const ROUTER = await Router.deployed();
