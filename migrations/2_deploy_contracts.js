@@ -27,8 +27,8 @@ module.exports = async function (deployer, network, accounts) {
       await deployer.deploy(WETH);
       weth = await WETH.deployed();
   }
- 
-  await deployer.deploy(Router, FACTORY_ADDRESS, weth.address);
+  const Weth_address = "0x9561C133DD8580860B6b7E504bC5Aa500f0f06a7";
+  await deployer.deploy(Router, FACTORY_ADDRESS, Weth_address);
   const ROUTER = await Router.deployed();
  
   // const route = new web3.eth.Contract(ROUTER.abi, ROUTER.address);

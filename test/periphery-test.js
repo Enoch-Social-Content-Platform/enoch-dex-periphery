@@ -123,31 +123,82 @@ contract("ERC20-ERC20 pairs", accounts => {
     })
 })
 
-// contract("ERC20-ETH pairs", accounts => {
-
-//     // I am unable to call this function (addLiquidityETH) properly. Try fixing it since you have been working on it longer than me.
-//     it('creates ERC20-ETH pool and adds liquidity', async () => {
-//         const ROUTER = await Router.deployed();
-//         const account_address = accounts[0];
+contract("ERC20-ETH pairs", accounts => {
+    const account_address = accounts[0];
+    const account_address2 = accounts[1];
+    const Weth_address = "0x9561C133DD8580860B6b7E504bC5Aa500f0f06a7";
+   
+    it('creates ERC20-ETH pool and adds liquidity', async () => {
+        const ROUTER = await Router.deployed();
+        const account_address = accounts[0];
         
-//         await token2.methods.approve(ROUTER.address, 9000000).send({from:account_address});
-//         let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
-//         console.log("Allowance for Token2", a2);
+        await token2.methods.approve(ROUTER.address, 9000000).send({from:account_address});
+        let a2 = await token2.methods.allowance(account_address, ROUTER.address).call()
+        console.log("Allowance for Token2", a2);
 
-//         console.log(await ROUTER.addLiquidityETH(
-//             token2Address, 
-//             10000,
-//             3000,
-//             2000,
-//             account_address, 
-//             Math.floor(Date.now()/1000) + 60 * 20,
-//             {value: 5000,
-//             from: account_address}
-//         ))
-//     })
+        console.log(await ROUTER.addLiquidityETH(
+            token2Address, 
+            10000,
+            3000,
+            2000,
+            account_address, 
+            Math.floor(Date.now()/1000) + 60 * 20,
+            {value: 5000,
+            from: account_address}
+        ))
+    
+    })
+    it('amount of pool tokens owned by an address', async() =>{
+        console.log(await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
+    })
 
-//     // NOTE
-//     // create test case for the following:
-//     // 1. swapETH
-//     // 2. remove liquidityETH
-// })
+    it('total amount of pool tokens',async() =>{
+        console.log(await V2ERC20_weth_pair.methods.totalSupply().call())
+    })
+    
+    it('Swapping ETH to Token ', async() =>{
+        const ROUTER = await Router.deployed();
+        path = [Weth_address, token2Address];
+
+        console.log( await ROUTER.swapExactETHForTokens(
+            1000,
+            path,
+            account_address2,
+            Math.floor(Date.now()/1000) + 60 * 20,
+            {value: 5000, from:account_address2}
+       ))
+    })
+
+    it('Balance of Token2 in account after swapping',async() =>{
+        let bal3 = await token2.methods.balanceOf(account_address2).call()
+        console.log("token2 balance in address 2",bal3)
+        
+    })
+
+    it('Give Approval for removing liquidity ', async() =>{
+       const ROUTER = await Router.deployed();
+       await V2ERC20_weth_pair.methods.approve(ROUTER.address, 8000).send({from:account_address});
+       let a3 = await V2ERC20_weth_pair.methods.allowance(account_address, ROUTER.address).call();
+       console.log(a3);
+
+    })
+
+    it('Remove Liquidity', async() =>{
+        const ROUTER = await Router.deployed();
+        await ROUTER.removeLiquidityETH(
+        token2Address, 
+        5000,
+        100,
+        10,
+        account_address, 
+        Math.floor(Date.now()/1000) + 60 * 20,
+        {from: account_address}
+    )
+    })
+
+   it('amount of pool tokens left after removal', async() =>{
+    console.log(await V2ERC20_weth_pair.methods.balanceOf(account_address).call())
+
+   })
+
+})
