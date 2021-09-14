@@ -109,7 +109,7 @@ contract("ERC20-ERC20 pairs", accounts => {
          await ROUTER.removeLiquidity(
             token1Address,
             token2Address,
-            10000,
+            6000,
             100,
             100,
             account_address,
@@ -138,9 +138,9 @@ contract("ERC20-ETH pairs", accounts => {
 
         console.log(await ROUTER.addLiquidityETH(
             token2Address, 
-            10000,
-            3000,
-            2000,
+            5000,
+            1000,
+            1000,
             account_address, 
             Math.floor(Date.now()/1000) + 60 * 20,
             {value: 5000,
@@ -187,7 +187,7 @@ contract("ERC20-ETH pairs", accounts => {
         const ROUTER = await Router.deployed();
         await ROUTER.removeLiquidityETH(
         token2Address, 
-        5000,
+        1000,
         100,
         10,
         account_address, 
