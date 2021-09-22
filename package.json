@@ -1,27 +1,16 @@
 {
-  "name": "enoch-dex-periphery",
-  "version": "1.0.0",
-  "description": "Periphery smart contracts which interact with the core dex smart contracts",
-  "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.7",
+    "hardhat": "^2.6.4"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/finaxis300/enoch-dex-periphery.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/finaxis300/enoch-dex-periphery/issues"
-  },
-  "homepage": "https://github.com/finaxis300/enoch-dex-periphery#readme",
   "dependencies": {
-    "@uniswap/lib": "^4.0.1-alpha",
-    "@uniswap/v2-core": "^1.0.1"
+    "@uniswap/lib": "*",
+    "@uniswap/v2-core": "^1.0.1",
+    "hardhat-abi-exporter": "^2.3.0"
   }
 }
