@@ -1,12 +1,12 @@
 pragma solidity >=0.5.0;
 
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
-import '@uniswap/lib/contracts/libraries/Babylonian.sol';
-import '@uniswap/lib/contracts/libraries/FullMath.sol';
+import '../interfaces/IEnochV1Pair.sol';
+import '../interfaces/IEnochV1Factory.sol';
+import './Babylonian.sol';
+import './FullMath.sol';
 
 import './SafeMath.sol';
-import './UniswapV2Library.sol';
+import './EnochLibrary.sol';
 
 // library containing some math for dealing with the liquidity shares of a pair, e.g. computing their exact value
 // in terms of the underlying tokens
@@ -48,7 +48,7 @@ library UniswapV2LiquidityMathLibrary {
         uint256 truePriceTokenB
     ) view internal returns (uint256 reserveA, uint256 reserveB) {
         // first get reserves before the swap
-        (reserveA, reserveB) = UniswapV2Library.getReserves(factory, tokenA, tokenB);
+        (reserveA, reserveB) = EnochLibrary.getReserves(factory, tokenA, tokenB);
 
         require(reserveA > 0 && reserveB > 0, 'UniswapV2ArbitrageLibrary: ZERO_PAIR_RESERVES');
 
@@ -61,11 +61,11 @@ library UniswapV2LiquidityMathLibrary {
 
         // now affect the trade to the reserves
         if (aToB) {
-            uint amountOut = UniswapV2Library.getAmountOut(amountIn, reserveA, reserveB);
+            uint amountOut = EnochLibrary.getAmountOut(amountIn, reserveA, reserveB);
             reserveA += amountIn;
             reserveB -= amountOut;
         } else {
-            uint amountOut = UniswapV2Library.getAmountOut(amountIn, reserveB, reserveA);
+            uint amountOut = EnochLibrary.getAmountOut(amountIn, reserveB, reserveA);
             reserveB += amountIn;
             reserveA -= amountOut;
         }
@@ -103,9 +103,9 @@ library UniswapV2LiquidityMathLibrary {
         address tokenB,
         uint256 liquidityAmount
     ) internal view returns (uint256 tokenAAmount, uint256 tokenBAmount) {
-        (uint256 reservesA, uint256 reservesB) = UniswapV2Library.getReserves(factory, tokenA, tokenB);
-        IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
-        bool feeOn = IUniswapV2Factory(factory).feeTo() != address(0);
+        (uint256 reservesA, uint256 reservesB) = EnochLibrary.getReserves(factory, tokenA, tokenB);
+        IEnochV1Pair pair = IEnochV1Pair(EnochLibrary.pairFor(factory, tokenA, tokenB));
+        bool feeOn = IEnochV1Factory(factory).feeTo() != address(0);
         uint kLast = feeOn ? pair.kLast() : 0;
         uint totalSupply = pair.totalSupply();
         return computeLiquidityValue(reservesA, reservesB, totalSupply, liquidityAmount, feeOn, kLast);
@@ -124,8 +124,8 @@ library UniswapV2LiquidityMathLibrary {
         uint256 tokenAAmount,
         uint256 tokenBAmount
     ) {
-        bool feeOn = IUniswapV2Factory(factory).feeTo() != address(0);
-        IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
+        bool feeOn = IEnochV1Factory(factory).feeTo() != address(0);
+        IEnochV1Pair pair = IEnochV1Pair(EnochLibrary.pairFor(factory, tokenA, tokenB));
         uint kLast = feeOn ? pair.kLast() : 0;
         uint totalSupply = pair.totalSupply();
 

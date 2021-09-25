@@ -51,7 +51,7 @@ module.exports = {
     path: './abi',
     clear: false,
     flat: true,
-    only: ['UniswapV2Router02'],
+    only: ['EnochV1Router02'],
     spacing: 2,
     pretty: true,
   }
